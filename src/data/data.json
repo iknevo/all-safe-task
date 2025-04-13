@@ -1,0 +1,33 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "All-Safe task",
+      "description": "a full-featured project management dashboard similar to trello (but simplified). Each project contains multiple tasks, you should be able to create, read, update, delete (CRUD) both projects and tasks.",
+      "createionData": "",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "initial project setup",
+          "description": "packages, structure, etc...",
+          "assignee": "amr",
+          "dueDate": ""
+        },
+        {
+          "id": 2,
+          "title": "initial project setup",
+          "description": "packages, structure, etc...",
+          "assignee": "eng.amr",
+          "dueDate": ""
+        },
+        {
+          "id": 3,
+          "title": "initial project setup",
+          "description": "packages, structure, etc...",
+          "assignee": "eng.amr",
+          "dueDate": ""
+        }
+      ]
+    }
+  ]
+}
