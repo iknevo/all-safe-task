@@ -1,4 +1,5 @@
 import { DndContext } from "@dnd-kit/core";
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Spinner from "../../ui/Spinner";
@@ -17,12 +18,13 @@ export default function Kanban() {
   const { project, isLoading } = useProject(id);
   const { updateProject } = useUpdateProject();
   const [tasks, setTasks] = useState([]);
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (project?.tasks) {
       setTasks(project.tasks);
     }
-  }, [project?.tasks]);
+  }, [id, project?.tasks]);
 
   function onDragEnd(event) {
     const { active, over } = event;
@@ -41,6 +43,7 @@ export default function Kanban() {
 
     const updatedProject = { ...project, tasks: updatedTasks };
     updateProject({ updatedProject, id: project.id });
+    queryClient.setQueryData(["project", id], updatedProject);
   }
 
   if (isLoading) return <Spinner />;
