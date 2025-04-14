@@ -1,5 +1,8 @@
 import { DndContext } from "@dnd-kit/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import Spinner from "../../ui/Spinner";
+import { useProject } from "../projects/useProject";
 import Column from "./Column";
 
 const columns = [
@@ -8,16 +11,16 @@ const columns = [
   { id: "DONE", title: "Done" },
 ];
 
-const initialTasks = [
-  { id: 1, status: "TODO", description: "task 1" },
-  { id: 2, status: "DONE", description: "task 2" },
-  { id: 3, status: "IN_PROGRESS", description: "task 3" },
-  { id: 4, status: "DONE", description: "task 4" },
-  { id: 5, status: "TODO", description: "task 5" },
-];
-
 export default function Kanban() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const { id } = useParams();
+  const { project, isLoading } = useProject(id);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    if (project?.tasks) {
+      setTasks(project.tasks);
+    }
+  }, [project?.tasks]);
 
   function onDragEnd(event) {
     const { active, over } = event;
@@ -35,8 +38,9 @@ export default function Kanban() {
     );
   }
 
+  if (isLoading) return <Spinner />;
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="grid grid-cols-3 gap-8 items-start py-8">
       <DndContext onDragEnd={onDragEnd}>
         {columns.map((column) => (
           <Column

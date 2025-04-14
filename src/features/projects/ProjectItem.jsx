@@ -9,7 +9,7 @@ export default function ProjectItem({ project }) {
   return (
     <div
       onClick={() => navigate(`/projects/${project.id}`)}
-      className="bg-primary-200 relative p-4 rounded-md text-lg cursor-pointer transition-all duration-200 hover:bg-primary-950 hover:text-white"
+      className="bg-primary-200 relative p-4 rounded-md text-lg cursor-pointer transition-all duration-300 hover:bg-primary-950 hover:text-white"
     >
       <div className="font-bold text-xl">{project.title}</div>
       <div className="mb-2">{project.description}</div>
@@ -18,7 +18,10 @@ export default function ProjectItem({ project }) {
       </div>
       <div>{project.tasks.length} tasks</div>
       <span
-        onClick={() => deleteProject(project.id)}
+        onClick={(e) => {
+          e.stopPropagation();
+          deleteProject(project.id);
+        }}
         className="absolute right-2 bottom-2 cursor-pointer hover:scale-110 transition-all duration-150"
       >
         <BsTrashFill className="text-2xl text-red-700" />
