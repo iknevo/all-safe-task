@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useUpdateProject } from "./useUpdateProject";
 
 export default function EditProjectForm({ project, setOpenId }) {
@@ -18,6 +19,7 @@ export default function EditProjectForm({ project, setOpenId }) {
       { updatedProject: { ...data }, id: project.id },
       {
         onSuccess: () => {
+          toast.success("Project updated successfully!");
           setOpenId(null);
         },
       }

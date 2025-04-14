@@ -8,7 +8,6 @@ export function useUpdateProject() {
     mutationFn: ({ updatedProject, id }) =>
       updateProjectApi(updatedProject, id),
     onSuccess: () => {
-      toast.success("Project updated successfully!");
       queryClient.invalidateQueries({
         queryKey: ["projects"],
       });

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Spinner from "../../ui/Spinner";
 import { useProject } from "../projects/useProject";
+import { useUpdateProject } from "../projects/useUpdateProject";
 import Column from "./Column";
 
 const columns = [
@@ -14,6 +15,7 @@ const columns = [
 export default function Kanban() {
   const { id } = useParams();
   const { project, isLoading } = useProject(id);
+  const { updateProject } = useUpdateProject();
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -24,18 +26,21 @@ export default function Kanban() {
 
   function onDragEnd(event) {
     const { active, over } = event;
-    // not over something that is dropable
+    // not over something that is droppable
     if (!over) return;
     // the currently dragged item
     const taskId = active.id;
     // col we are moving into
     const newStatus = over.id;
 
-    setTasks((tasks) =>
-      tasks.map((task) =>
-        task.id === taskId ? { ...task, status: newStatus } : task
-      )
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, status: newStatus } : task
     );
+
+    setTasks(updatedTasks);
+
+    const updatedProject = { ...project, tasks: updatedTasks };
+    updateProject({ updatedProject, id: project.id });
   }
 
   if (isLoading) return <Spinner />;
