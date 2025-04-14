@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import Projects from "./features/Projects";
+import ProjectsContainer from "./features/projects/ProjectsContainer";
 import DefaultLayout from "./layout/DefaultLayout";
 import PageNotFound from "./pages/PageNotFound";
 
@@ -13,7 +13,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "projects",
-        element: <Projects />,
+        element: <ProjectsContainer />,
       },
     ],
   },

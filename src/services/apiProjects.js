@@ -28,3 +28,20 @@ export async function uploadAllProjects() {
     toast.error("There was an error getting projects, try again!");
   }
 }
+
+export async function updateProject(project) {
+  try {
+    const res = await fetch(`${API_URL}/projects/${project.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(project),
+    });
+    return res.json();
+  } catch (err) {
+    console.error(err);
+    toast.error("There was an error updating the project, try again!");
+    throw err;
+  }
+}
