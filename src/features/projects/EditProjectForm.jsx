@@ -1,23 +1,34 @@
 import { useForm } from "react-hook-form";
+import { useUpdateProject } from "./useUpdateProject";
 
-export default function EditProjectForm({ project }) {
+export default function EditProjectForm({ project, setOpenId }) {
   // console.log(project);
+  const { updateProject, isPending } = useUpdateProject();
 
   const { register, handleSubmit, formState } = useForm({
     defaultValues: { ...project },
   });
   const { errors } = formState;
-  console.log(formState);
-  console.log(errors);
+  // console.log(formState);
+  // console.log(errors);
 
-  function onSubmit(e, data) {
-    e.preventDefault();
-    // console.log(data);
+  function onSubmit(data) {
+    console.log("Submitted data:", data);
+    updateProject(
+      { updatedProject: { ...data }, id: project.id },
+      {
+        onSuccess: () => {
+          setOpenId(null);
+        },
+      }
+    );
+
+    // Add your submission logic here
   }
 
   return (
     <form
-      onSubmit={(e) => handleSubmit(onSubmit(e))}
+      onSubmit={handleSubmit(onSubmit)}
       onClick={(e) => e.stopPropagation()}
       className="flex flex-col gap-1"
     >
@@ -29,8 +40,8 @@ export default function EditProjectForm({ project }) {
           className="p-2 rounded bg-primary-950 text-white"
           // onClick={(e) => e.stopPropagation()}
         />
-        {errors.title && (
-          <span className="text-sm text-red-600">{errors.title}</span>
+        {errors?.title?.message && (
+          <span className="text-sm text-red-600">{errors.title.message}</span>
         )}
       </div>
 
@@ -43,17 +54,16 @@ export default function EditProjectForm({ project }) {
         />
 
         {errors?.description?.message && (
-          <span className="text-md text-red-600">
-            {errors?.description?.message}
+          <span className="text-sm text-red-600">
+            {errors.description.message}
           </span>
         )}
       </div>
       <button
-        // onClick={(e) => handleSubmit(onSubmit(e))}
-        className="bg-primary-700 text-[16px] self-end px-2 py-1 rounded-md text-white uppercase"
+        className="bg-primary-700 cursor-pointer text-[16px] self-end px-2 py-1 rounded-md text-white uppercase"
         type="submit"
       >
-        Save
+        {isPending ? "Updating" : "Save"}
       </button>
     </form>
   );

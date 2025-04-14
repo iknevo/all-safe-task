@@ -13,14 +13,14 @@ export async function getAllProjects() {
   }
 }
 
-export async function updateProject(project) {
+export async function updateProject(updatedProject, id) {
   try {
-    const res = await fetch(`${API_URL}/projects/${project.id}`, {
+    const res = await fetch(`${API_URL}/projects/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(project),
+      body: JSON.stringify(updatedProject),
     });
     return res.json();
   } catch (err) {

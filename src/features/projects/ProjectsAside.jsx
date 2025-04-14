@@ -29,7 +29,7 @@ export default function ProjectsAside({ projects }) {
               </span>
             </div>
             {openId === project.id && (
-              <EditProjectForm project={currentProject} />
+              <EditProjectForm project={currentProject} setOpenId={setOpenId} />
             )}
           </li>
         ))}
