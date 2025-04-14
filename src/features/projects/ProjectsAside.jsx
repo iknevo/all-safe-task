@@ -13,7 +13,7 @@ export default function ProjectsAside({ projects }) {
   return (
     <aside>
       <h2 className="text-2xl text-primary-100 uppercase tracking-wider mb-4">
-        Projects Actions
+        Edit Projects
       </h2>
       <ul className="flex flex-col gap-4 overflow-y-auto  h-[calc(100vh-210px)]">
         {projects.map((project) => (

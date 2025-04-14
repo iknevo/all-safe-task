@@ -13,22 +13,6 @@ export async function getAllProjects() {
   }
 }
 
-export async function uploadAllProjects() {
-  try {
-    const res = await fetch(`${API_URL}/projects`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(projects),
-    });
-    return res.json();
-  } catch (err) {
-    console.error(err);
-    toast.error("There was an error getting projects, try again!");
-  }
-}
-
 export async function updateProject(project) {
   try {
     const res = await fetch(`${API_URL}/projects/${project.id}`, {
@@ -42,6 +26,22 @@ export async function updateProject(project) {
   } catch (err) {
     console.error(err);
     toast.error("There was an error updating the project, try again!");
-    throw err;
+  }
+}
+
+// ! for development
+export async function uploadAllProjects() {
+  try {
+    const res = await fetch(`${API_URL}/projects`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(projects),
+    });
+    return res.json();
+  } catch (err) {
+    console.error(err);
+    toast.error("There was an error getting projects, try again!");
   }
 }
