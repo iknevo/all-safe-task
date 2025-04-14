@@ -1,42 +1,45 @@
 import { useForm } from "react-hook-form";
-import { useUpdateProject } from "./useUpdateProject";
+import { v4 as uuidv4 } from "uuid";
+import { useAddProject } from "./useAddProject";
 
-export default function EditProjectForm({ project, setOpenId }) {
+export default function AddProjectForm({ onCloseModal }) {
   // console.log(project);
-  const { updateProject, isPending } = useUpdateProject();
+  const { addProject, isPending } = useAddProject();
 
-  const { register, handleSubmit, formState } = useForm({
-    defaultValues: { ...project },
-  });
+  const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
   // console.log(formState);
   // console.log(errors);
 
   function onSubmit(data) {
     console.log("Submitted data:", data);
-    updateProject(
-      { updatedProject: { ...data }, id: project.id },
-      {
-        onSuccess: () => {
-          setOpenId(null);
-        },
-      }
-    );
+    const newProject = {
+      ...data,
+      id: uuidv4(),
+      createdAt: new Date().toISOString().slice(0, -1),
+      tasks: [],
+    };
+    console.log(newProject);
+    addProject(newProject, {
+      onSuccess: () => {
+        onCloseModal?.();
+      },
+    });
   }
 
   function onCancel(e) {
     e.preventDefault();
-    setOpenId(null);
+    onCloseModal?.();
   }
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       onClick={(e) => e.stopPropagation()}
-      className="flex flex-col gap-2"
+      className="flex flex-col gap-2 w-[500px]"
     >
       <h3 className="text-xl text-primary-950 font-semibold text-center">
-        Edit Project
+        Add Project
       </h3>
       <div className="flex flex-col gap-1">
         <label htmlFor="title">Title</label>
@@ -81,7 +84,7 @@ export default function EditProjectForm({ project, setOpenId }) {
           className="bg-primary-700 cursor-pointer text-[16px]  px-2 py-1 rounded-md text-white uppercase"
           type="submit"
         >
-          {isPending ? "Updating" : "Save"}
+          {isPending ? "Adding" : "Add"}
         </button>
       </div>
     </form>

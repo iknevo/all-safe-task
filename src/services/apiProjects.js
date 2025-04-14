@@ -13,6 +13,22 @@ export async function getAllProjects() {
   }
 }
 
+export async function addProject(project) {
+  try {
+    const res = await fetch(`${API_URL}/projects`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(project),
+    });
+    return res.json();
+  } catch (err) {
+    console.error(err);
+    toast.error("There was an error adding projects, try again!");
+  }
+}
+
 export async function updateProject(updatedProject, id) {
   try {
     const res = await fetch(`${API_URL}/projects/${id}`, {

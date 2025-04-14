@@ -9,7 +9,7 @@ export default function ProjectItem({ project }) {
       <div className="font-bold text-xl">{project.title}</div>
       <div className="mb-2">{project.description}</div>
       <div>
-        Created: {format(new Date(project.creationDate), "EEE, MMM dd yyyy")}
+        Created: {format(new Date(project.createdAt), "EEE, MMM dd yyyy")}
       </div>
       <div>{project.tasks.length} tasks</div>
       <span
