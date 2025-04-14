@@ -29,6 +29,18 @@ export async function updateProject(updatedProject, id) {
   }
 }
 
+export async function deleteProject(id) {
+  try {
+    const res = await fetch(`${API_URL}/projects/${id}`, {
+      method: "DELETE",
+    });
+    return res.json();
+  } catch (err) {
+    console.error(err);
+    toast.error("There was an error deleting the project, try again!");
+  }
+}
+
 // ! for development
 export async function uploadAllProjects() {
   try {
