@@ -48,16 +48,21 @@ export default function Kanban() {
 
   if (isLoading) return <Spinner />;
   return (
-    <div className="grid grid-cols-3 gap-8 items-start py-8">
-      <DndContext onDragEnd={onDragEnd}>
-        {columns.map((column) => (
-          <Column
-            key={column.id}
-            column={column}
-            tasks={tasks.filter((task) => task.status === column.id)}
-          />
-        ))}
-      </DndContext>
+    <div className="py-8">
+      <h1 className="text-3xl text-primary-300 text-center font-semibold">
+        {project.title}
+      </h1>
+      <div className="grid grid-cols-3 gap-8 items-start py-8">
+        <DndContext onDragEnd={onDragEnd}>
+          {columns.map((column) => (
+            <Column
+              key={column.id}
+              column={column}
+              tasks={tasks.filter((task) => task.status === column.id)}
+            />
+          ))}
+        </DndContext>
+      </div>
     </div>
   );
 }
