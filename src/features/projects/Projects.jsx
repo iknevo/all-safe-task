@@ -11,7 +11,7 @@ export default function Projects({ projects }) {
         </h2>
         <Modal>
           <Modal.Open opens="add-project">
-            <button className="bg-primary-500 uppercase tracking-widest text-white font-bold hover:bg-primary-400 hover:text-primary-950 transition-all duration-200 rounded-md py-2 px-4 cursor-pointer ">
+            <button className="bg-primary-500 uppercase tracking-widest text-white font-semibold hover:bg-primary-400 hover:text-primary-950 transition-all duration-200 rounded-md py-1 px-3 cursor-pointer ">
               add project
             </button>
           </Modal.Open>
@@ -20,7 +20,7 @@ export default function Projects({ projects }) {
           </Modal.Window>
         </Modal>
       </div>
-      <div className="grid grid-cols-1  md:grid-cols-2 gap-4 overflow-y-auto max-h-[calc(100vh-200px)]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-scroll max-h-[calc(100vh-200px)]">
         {projects.map((project) => (
           <ProjectItem project={project} key={project.id} />
         ))}

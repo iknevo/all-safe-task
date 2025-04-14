@@ -1,11 +1,16 @@
 import { format } from "date-fns";
 import { BsTrashFill } from "react-icons/bs";
+import { useNavigate } from "react-router";
 import { useDeleteProject } from "./useDeleteProject";
 
 export default function ProjectItem({ project }) {
   const { deleteProject } = useDeleteProject();
+  const navigate = useNavigate();
   return (
-    <div className="bg-primary-200 relative p-4 rounded-md text-lg">
+    <div
+      onClick={() => navigate(`/projects/${project.id}`)}
+      className="bg-primary-200 relative p-4 rounded-md text-lg cursor-pointer transition-all duration-200 hover:bg-primary-950 hover:text-white"
+    >
       <div className="font-bold text-xl">{project.title}</div>
       <div className="mb-2">{project.description}</div>
       <div>

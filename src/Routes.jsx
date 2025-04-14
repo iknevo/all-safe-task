@@ -1,7 +1,8 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import ProjectsContainer from "./features/projects/ProjectsContainer";
+import Kanban from "./features/tasks/Kanban";
 import DefaultLayout from "./layout/DefaultLayout";
 import PageNotFound from "./pages/PageNotFound";
+import ProjectsPage from "./pages/ProjectsPage";
 
 const Router = createBrowserRouter([
   {
@@ -13,7 +14,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "projects",
-        element: <ProjectsContainer />,
+        element: <ProjectsPage />,
+      },
+      {
+        path: "projects/:id",
+        element: <Kanban />,
       },
     ],
   },

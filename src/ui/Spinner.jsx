@@ -1,4 +1,5 @@
 import { ring } from "ldrs";
+
 export default function Spinner() {
   ring.register();
   return (

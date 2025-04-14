@@ -1,9 +1,9 @@
-import Spinner from "../../ui/Spinner";
-import Projects from "./Projects";
-import ProjectsAside from "./ProjectsAside";
-import { useProjects } from "./useProjects";
+import Projects from "../features/projects/Projects";
+import ProjectsAside from "../features/projects/ProjectsAside";
+import { useProjects } from "../features/projects/useProjects";
+import Spinner from "../ui/Spinner";
 
-export default function ProjectsContainer() {
+export default function ProjectsPage() {
   const { projects, isLoading } = useProjects();
 
   if (isLoading) return <Spinner />;

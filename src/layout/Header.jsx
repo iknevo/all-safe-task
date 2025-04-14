@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className="flex justify-between px-1 py-4 border-b-1 border-primary-100/20">
       <Link
-        to="/dashboard"
+        to="/projects"
         className="text-2xl tracking-widest text-white font-semibold uppercase"
       >
         NotSafe task

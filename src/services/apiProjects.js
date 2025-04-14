@@ -13,6 +13,17 @@ export async function getAllProjects() {
   }
 }
 
+export async function getProject(id) {
+  try {
+    const res = await fetch(`${API_URL}/projects/${id}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+    toast.error("There was an error getting project, try again!");
+  }
+}
+
 export async function addProject(project) {
   try {
     const res = await fetch(`${API_URL}/projects`, {
