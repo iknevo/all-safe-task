@@ -9,8 +9,8 @@ export default function ProjectsPage() {
   if (isLoading) return <Spinner />;
 
   return (
-    <section className="grid grid-cols-[25fr_75fr] gap-8 py-4">
-      <ProjectsAside projects={projects} />
+    <section>
+      {/* <ProjectsAside projects={projects} /> */}
       <Projects projects={projects} />
     </section>
   );

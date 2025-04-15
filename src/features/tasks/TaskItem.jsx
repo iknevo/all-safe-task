@@ -33,17 +33,17 @@ export default function TaskItem({ project, task, isDragging }) {
   // If this is the original item and it's being dragged, make it invisible
   const opacity = isDraggingItem && !isDragging ? "opacity-0" : "opacity-100";
 
-  function handleEditTask(e) {
-    e.stopPropagation();
-    console.log(task);
-    console.log(project);
-    console.log("Edit task:", task.id);
-  }
+  // function handleEditTask(e) {
+  //   e.stopPropagation();
+  //   console.log(task);
+  //   console.log(project);
+  //   console.log("Edit task:", task.id);
+  // }
 
   function handleDeleteTask(e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Delete task:", task.id);
+    // console.log("Delete task:", task.id);
 
     const newProject = {
       ...project,
@@ -86,7 +86,7 @@ export default function TaskItem({ project, task, isDragging }) {
         <Modal>
           <Modal.Open opens={`${task.id}`}>
             <button
-              onClick={handleEditTask}
+              // onClick={handleEditTask}
               className="z-50 relative pointer-events-auto"
             >
               <BiEdit className="text-2xl text-neutral-50 cursor-pointer transition-all duration-150 hover:text-cyan-400" />

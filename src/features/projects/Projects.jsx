@@ -4,8 +4,8 @@ import ProjectItem from "./ProjectItem";
 
 export default function Projects({ projects }) {
   return (
-    <main className="flex flex-col">
-      <div className="flex justify-between items-center mb-4 pr-2">
+    <main className="flex flex-col py-4">
+      <div className="flex justify-between items-center mb-8 pr-2">
         <h2 className="text-2xl text-neutral-100 uppercase tracking-wider">
           Your Projects {`( ${projects.length} )`}
         </h2>
@@ -20,7 +20,7 @@ export default function Projects({ projects }) {
           </Modal.Window>
         </Modal>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-scroll max-h-[calc(100vh-200px)]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-y-scroll max-h-[calc(100vh-200px)]">
         {projects.map((project) => (
           <ProjectItem project={project} key={project.id} />
         ))}
