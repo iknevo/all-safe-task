@@ -30,7 +30,7 @@
 }
 
 body {
-  @apply min-h-dvh bg-neutral-950 overflow-hidden;
+  @apply min-h-dvh bg-neutral-950 overflow-auto;
   /* background-image: var(--main-gradient); */
 }
 

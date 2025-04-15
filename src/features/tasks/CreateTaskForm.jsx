@@ -52,7 +52,7 @@ export default function CreateTaskForm({ project, onCloseModal }) {
     <form
       onSubmit={handleSubmit(onSubmit)}
       onClick={(e) => e.stopPropagation()}
-      className="flex flex-col gap-2 w-[500px]"
+      className="flex flex-col gap-2 w-[300px] md:w-[500px]"
     >
       <h3 className="text-xl text-neutral-950 font-semibold text-center">
         Create New Task

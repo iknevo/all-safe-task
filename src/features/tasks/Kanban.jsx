@@ -77,7 +77,7 @@ export default function Kanban() {
       </div>
       {project.tasks.length > 0 ? (
         <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
-          <div className="grid grid-cols-3 gap-8 items-start py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start py-8">
             {columns.map((column) => (
               <Column
                 key={column.id}

@@ -30,13 +30,13 @@ export default function LoginForm() {
 
   return (
     <div className="flex items-center flex-col gap-12 justify-center h-screen">
-      <h1 className="text-5xl uppercase text-neutral-100 font-semibold text-center">
+      <h1 className="text-3xl md:text-5xl uppercase text-neutral-100 font-semibold text-center">
         Login
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         onClick={(e) => e.stopPropagation()}
-        className="flex flex-col gap-4 w-[650px] bg-neutral-800 py-8 px-4 rounded-md"
+        className="flex flex-col gap-4 w-[400px]  md:w-[650px] bg-neutral-800 py-8 px-4 rounded-md"
       >
         <div className="flex flex-col gap-2">
           <label
