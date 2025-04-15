@@ -29,8 +29,8 @@ function App() {
             fontSize: "16px",
             maxWidth: "700px",
             padding: "12px 20px",
-            backgroundColor: "var(--color-primary-100)",
-            color: "var(--color-primary-950)",
+            backgroundColor: "var(--color-neutral-300)",
+            color: "var(--color-neutral-950)",
           },
         }}
       />

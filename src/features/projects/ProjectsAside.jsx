@@ -12,14 +12,14 @@ export default function ProjectsAside({ projects }) {
   }
   return (
     <aside>
-      <h2 className="text-2xl text-primary-100 uppercase tracking-wider mb-4">
+      <h2 className="text-2xl text-neutral-100 uppercase tracking-wider mb-4">
         Edit Projects
       </h2>
       <ul className="flex flex-col gap-4 overflow-y-auto  max-h-[calc(100vh-210px)]">
         {projects.map((project) => (
           <li
             onClick={() => handleOpen(project)}
-            className="bg-primary-200 cursor-pointer flex flex-col gap-4 py-2 px-4 text-xl rounded-md"
+            className="bg-neutral-200 cursor-pointer flex flex-col gap-4 py-2 px-4 text-xl rounded-md"
             key={project.id}
           >
             <div className="flex justify-between items-center">

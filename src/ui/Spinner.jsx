@@ -9,7 +9,7 @@ export default function Spinner() {
         stroke="7"
         bg-opacity="0"
         speed="2"
-        color="var(--color-primary-400)"
+        color="var(--color-neutral-400)"
       ></l-ring>
     </div>
   );

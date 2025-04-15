@@ -9,7 +9,7 @@ export default function ProjectItem({ project }) {
   return (
     <div
       onClick={() => navigate(`/projects/${project.id}`)}
-      className="bg-primary-200 relative p-4 rounded-md text-lg cursor-pointer transition-all duration-300 hover:bg-primary-950 hover:text-white"
+      className="bg-neutral-200 relative p-4 rounded-md text-lg cursor-pointer transition-all duration-300 hover:bg-neutral-950 hover:text-white"
     >
       <div className="font-bold text-xl">{project.title}</div>
       <div className="mb-2">{project.description}</div>

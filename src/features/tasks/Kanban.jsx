@@ -49,7 +49,7 @@ export default function Kanban() {
   if (isLoading) return <Spinner />;
   return (
     <div className="py-8">
-      <h1 className="text-3xl text-primary-300 text-center font-semibold">
+      <h1 className="text-3xl text-neutral-300 text-center font-semibold">
         {project.title}
       </h1>
       <div className="grid grid-cols-3 gap-8 items-start py-8">

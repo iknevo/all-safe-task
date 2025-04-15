@@ -38,7 +38,7 @@ export default function AddProjectForm({ onCloseModal }) {
       onClick={(e) => e.stopPropagation()}
       className="flex flex-col gap-2 w-[500px]"
     >
-      <h3 className="text-xl text-primary-950 font-semibold text-center">
+      <h3 className="text-xl text-neutral-950 font-semibold text-center">
         Add Project
       </h3>
       <div className="flex flex-col gap-1">
@@ -48,7 +48,7 @@ export default function AddProjectForm({ onCloseModal }) {
           type="text"
           placeholder="title"
           {...register("title", { required: "This field is required!" })}
-          className="p-2 rounded bg-primary-950 text-white"
+          className="p-2 rounded bg-neutral-950 text-white"
           // onClick={(e) => e.stopPropagation()}
         />
         {errors?.title?.message && (
@@ -62,7 +62,7 @@ export default function AddProjectForm({ onCloseModal }) {
           id="description"
           placeholder="description"
           {...register("description", { required: "This field is required!" })}
-          className="resize-none p-2 h-[100px] rounded bg-primary-950 text-white"
+          className="resize-none p-2 h-[100px] rounded bg-neutral-950 text-white"
           // onClick={(e) => e.stopPropagation()}
         />
 
@@ -81,7 +81,7 @@ export default function AddProjectForm({ onCloseModal }) {
           cancel
         </button>
         <button
-          className="bg-primary-700 cursor-pointer text-[16px]  px-2 py-1 rounded-md text-white uppercase"
+          className="bg-neutral-700 cursor-pointer text-[16px]  px-2 py-1 rounded-md text-white uppercase"
           type="submit"
         >
           {isPending ? "Adding" : "Add"}
