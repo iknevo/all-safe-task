@@ -1,7 +1,7 @@
 import { useDroppable } from "@dnd-kit/core";
 import TaskItem from "./TaskItem";
 
-export default function Column({ column, tasks }) {
+export default function Column({ project, column, tasks }) {
   // console.log(tasks);
   const { setNodeRef } = useDroppable({ id: column.id });
   return (
@@ -11,7 +11,7 @@ export default function Column({ column, tasks }) {
       </h2>
       <div ref={setNodeRef} className="flex flex-1 flex-col gap-4">
         {tasks.map((task) => (
-          <TaskItem task={task} key={task.id} />
+          <TaskItem project={project} task={task} key={task.id} />
         ))}
       </div>
     </div>

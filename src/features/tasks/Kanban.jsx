@@ -59,6 +59,7 @@ export default function Kanban() {
               key={column.id}
               column={column}
               tasks={tasks.filter((task) => task.status === column.id)}
+              project={project}
             />
           ))}
         </DndContext>
