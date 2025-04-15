@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useUpdateProject } from "./useUpdateProject";
 
-export default function EditProjectForm({ project, setOpenId }) {
+export default function EditProjectForm({ project, onCloseModal }) {
   // console.log(project);
   const { updateProject, isPending } = useUpdateProject();
 
@@ -20,7 +20,7 @@ export default function EditProjectForm({ project, setOpenId }) {
       {
         onSuccess: () => {
           toast.success("Project updated successfully!");
-          setOpenId(null);
+          onCloseModal?.();
         },
       }
     );
@@ -28,14 +28,14 @@ export default function EditProjectForm({ project, setOpenId }) {
 
   function onCancel(e) {
     e.preventDefault();
-    setOpenId(null);
+    onCloseModal?.();
   }
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       onClick={(e) => e.stopPropagation()}
-      className="flex flex-col gap-2"
+      className="flex flex-col gap-2 w-[500px]"
     >
       <h3 className="text-xl text-neutral-950 font-semibold text-center">
         Edit Project

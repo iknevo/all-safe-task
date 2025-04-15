@@ -98,7 +98,7 @@ export default function Kanban() {
           <h1 className="text-xl md:text-5xl text-center">
             This project has no tasks, start by adding one!
           </h1>
-          <Modal>
+          {/* <Modal>
             <Modal.Open opens="create-task">
               <button className="bg-neutral-700 px-4 py-2 rounded-md font-semibold text-2xl cursor-pointer">
                 Add Task
@@ -107,7 +107,7 @@ export default function Kanban() {
             <Modal.Window name="create-task">
               <CreateTaskForm project={project} />
             </Modal.Window>
-          </Modal>
+          </Modal> */}
         </div>
       )}
     </div>
