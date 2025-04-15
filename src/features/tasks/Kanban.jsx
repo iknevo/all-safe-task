@@ -1,4 +1,4 @@
-import { DndContext } from "@dnd-kit/core";
+import { DndContext, DragOverlay } from "@dnd-kit/core";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -21,6 +21,7 @@ export default function Kanban() {
   const { project, isLoading } = useProject(id);
   const { updateProject } = useUpdateProject();
   const [tasks, setTasks] = useState([]);
+  const [activeTask, setActiveTask] = useState(null);
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -28,6 +29,13 @@ export default function Kanban() {
       setTasks(project.tasks);
     }
   }, [id, project?.tasks]);
+
+  function onDragStart(event) {
+    const { active } = event;
+    const taskId = active.id;
+    const task = tasks.find((t) => t.id === taskId);
+    setActiveTask(task);
+  }
 
   function onDragEnd(event) {
     const { active, over } = event;
@@ -68,7 +76,7 @@ export default function Kanban() {
         </Modal>
       </div>
       {project.tasks.length > 0 ? (
-        <DndContext onDragEnd={onDragEnd}>
+        <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
           <div className="grid grid-cols-3 gap-8 items-start py-8">
             {columns.map((column) => (
               <Column
@@ -79,6 +87,11 @@ export default function Kanban() {
               />
             ))}
           </div>
+          <DragOverlay>
+            {activeTask ? (
+              <TaskItem project={project} task={activeTask} isDragging={true} />
+            ) : null}
+          </DragOverlay>
         </DndContext>
       ) : (
         <div className="my-12 py-8 text-neutral-300 flex flex-col items-center gap-8 border-1 border-neutral-500/20 rounded-md">

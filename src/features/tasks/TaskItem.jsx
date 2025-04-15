@@ -7,19 +7,31 @@ import Modal from "../../ui/Modal";
 import { useUpdateProject } from "../projects/useUpdateProject";
 import EditTaskForm from "./EditTaskForm";
 
-export default function TaskItem({ project, task }) {
+export default function TaskItem({ project, task, isDragging }) {
   const { updateProject, isPending } = useUpdateProject();
   const queryClient = useQueryClient();
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    isDragging: isDraggingItem,
+  } = useDraggable({
     id: task.id,
   });
 
-  const styles = transform
-    ? {
-        transform: `translate(${transform.x}px , ${transform.y}px)`,
-        zIndex: 999,
-      }
-    : undefined;
+  const styles =
+    transform && !isDragging
+      ? {
+          transform: `translate(${transform.x}px , ${transform.y}px)`,
+          transition: isDraggingItem ? "none" : "transform 200ms ease",
+        }
+      : {
+          transition: "background-color 0ms, opacity 0ms",
+        };
+
+  // If this is the original item and it's being dragged, make it invisible
+  const opacity = isDraggingItem && !isDragging ? "opacity-0" : "opacity-100";
 
   function handleEditTask(e) {
     e.stopPropagation();
@@ -54,7 +66,7 @@ export default function TaskItem({ project, task }) {
 
   return (
     <div
-      ref={setNodeRef}
+      ref={!isDragging ? setNodeRef : null}
       style={styles}
       className={`cursor-grab relative rounded-md p-4 shadow-sm hover:shadow-md ${
         task.status === "DONE"
@@ -62,7 +74,7 @@ export default function TaskItem({ project, task }) {
           : task.status === "IN_PROGRESS"
           ? "bg-neutral-700"
           : "bg-amber-800"
-      }`}
+      } ${isDragging ? "z-[9999]" : ""} ${opacity}`}
     >
       <div
         {...listeners}

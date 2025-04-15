@@ -131,7 +131,7 @@ export default function CreateTaskForm({ project, onCloseModal }) {
           className="bg-neutral-700 cursor-pointer text-[16px]  px-2 py-1 rounded-md text-white uppercase"
           type="submit"
         >
-          {isPending ? "create" : "creating"}
+          {isPending ? "creating" : "create"}
         </button>
       </div>
     </form>
