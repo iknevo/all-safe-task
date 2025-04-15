@@ -14,8 +14,8 @@
   --color-primary-950: #1e1b4b;
   --main-gradient: linear-gradient(
     90deg,
-    var(--color-neutral-900) 0%,
-    var(--color-neutral-950) 100%
+    var(--color-primary-900) 0%,
+    var(--color-primary-950) 100%
   );
 }
 
@@ -29,14 +29,8 @@
   width: 0px;
 }
 
-html,
 body {
-  @apply h-full overflow-hidden;
-}
-
-body {
-  @apply min-h-dvh bg-neutral-950;
-
+  @apply min-h-dvh bg-neutral-950 overflow-hidden;
   /* background-image: var(--main-gradient); */
 }
 

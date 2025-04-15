@@ -36,11 +36,11 @@ function Open({ children, opens: windowName }) {
 
 function Window({ children, name }) {
   const { openName, close } = useContext(ModalContext);
-  const ref = useOutsideClick(close);
+  const ref = useOutsideClick(close, false);
 
   if (name !== openName) return null;
   return createPortal(
-    <div className="fixed top-0 left-0 z-50 h-dvh w-full bg-neutral-800/5  backdrop-blur-xs transition-all duration-500">
+    <div className="fixed top-0 left-0 z-30 h-dvh w-full bg-neutral-800/5  backdrop-blur-xs transition-all duration-500">
       <div
         className="fixed top-1/2 left-1/2 -translate-1/2 rounded-lg bg-neutral-200 p-10 transition-all duration-500"
         ref={ref}

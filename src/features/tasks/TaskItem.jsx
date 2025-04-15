@@ -22,7 +22,6 @@ export default function TaskItem({ project, task }) {
     : undefined;
 
   function handleEditTask(e) {
-    e.preventDefault();
     e.stopPropagation();
     console.log(task);
     console.log(project);
